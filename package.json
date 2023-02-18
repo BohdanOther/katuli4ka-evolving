@@ -5,6 +5,8 @@
     "source": "src/index.js",
     "main": "dist/index.js",
     "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist",
         "start": "npx parcel src/index.html --https --port 3300 --open --no-autoinstall --no-cache",
         "build": "parcel build"
     },
@@ -17,13 +19,14 @@
     "bugs": {
         "url": "https://github.com/BohdanOther/katuli4ka-evolving/issues"
     },
-    "homepage": "https://github.com/BohdanOther/katuli4ka-evolving#readme",
+    "homepage": "https://bohdanother.github.io/katuli4ka-evolving/",
     "devDependencies": {
         "parcel": "^2.8.3",
-        "process": "^0.11.10",
-        "prettier": "2.7.1"
+        "prettier": "2.7.1",
+        "process": "^0.11.10"
     },
     "dependencies": {
+        "gh-pages": "^5.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "wouter": "2.7.3"
