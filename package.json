@@ -1,0 +1,43 @@
+{
+    "name": "katuli4ka-evolving",
+    "version": "1.0.0",
+    "description": "Nades &amp; tactics",
+    "source": "src/index.js",
+    "main": "dist/index.js",
+    "scripts": {
+        "start": "npx parcel src/index.html --https --port 3300 --open --no-autoinstall --no-cache",
+        "build": "parcel build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/BohdanOther/katuli4ka-evolving.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/BohdanOther/katuli4ka-evolving/issues"
+    },
+    "homepage": "https://github.com/BohdanOther/katuli4ka-evolving#readme",
+    "devDependencies": {
+        "parcel": "^2.8.3",
+        "process": "^0.11.10",
+        "prettier": "2.7.1"
+    },
+    "dependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "wouter": "2.7.3"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
