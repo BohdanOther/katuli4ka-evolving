@@ -6,7 +6,7 @@
         "predeploy": "npm run build",
         "deploy": "gh-pages -d dist",
         "start": "npx parcel src/index.html --https --port 3300 --open --no-autoinstall --no-cache",
-        "build": "parcel build src/index.html"
+        "build": "parcel build src/index.html --public-url /katuli4ka-evolving --no-source-maps"
     },
     "repository": {
         "type": "git",
