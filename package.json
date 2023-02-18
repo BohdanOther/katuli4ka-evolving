@@ -2,19 +2,17 @@
     "name": "katuli4ka-evolving",
     "version": "1.0.0",
     "description": "Nades &amp; tactics",
-    "source": "src/index.js",
-    "main": "dist/index.js",
     "scripts": {
         "predeploy": "npm run build",
         "deploy": "gh-pages -d dist",
         "start": "npx parcel src/index.html --https --port 3300 --open --no-autoinstall --no-cache",
-        "build": "parcel build"
+        "build": "parcel build src/index.html"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/BohdanOther/katuli4ka-evolving.git"
     },
-    "author": "",
+    "author": "BohdanOther",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/BohdanOther/katuli4ka-evolving/issues"
