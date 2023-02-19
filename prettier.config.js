@@ -15,5 +15,12 @@ module.exports = {
                 printWidth: 1000,
             },
         },
+        {
+            files: '*.yml',
+            options: {
+                tabWidth: 2,
+                useTabs: true,
+            },
+        },
     ],
 };
