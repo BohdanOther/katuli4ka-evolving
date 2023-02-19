@@ -5,7 +5,7 @@
     "scripts": {
         "predeploy": "npm run build",
         "deploy": "gh-pages -d dist",
-        "start": "npx parcel src/index.html --https --port 3300 --open --no-autoinstall --no-cache",
+        "start": "npx parcel src/index.html --https --port 3300 --open --no-cache",
         "build": "parcel build src/index.html --public-url /katuli4ka-evolving --no-source-maps"
     },
     "repository": {
@@ -19,6 +19,8 @@
     },
     "homepage": "https://bohdanother.github.io/katuli4ka-evolving/",
     "devDependencies": {
+        "@parcel/compressor-gzip": "^2.8.3",
+        "@parcel/resolver-glob": "^2.8.3",
         "parcel": "^2.8.3",
         "prettier": "2.7.1",
         "process": "^0.11.10"
