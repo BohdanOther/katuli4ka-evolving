@@ -1,27 +1,35 @@
 import { useState } from 'react';
 
+import metadata from '../assets/metadata.json';
+
 import './index.css';
-import { groupPositions, parseNadeName } from './utils';
+import { sortActions, alphabeticalSort, getNadeMeta, groupPositions, parseNadeName } from './utils';
 
-let files = require('../assets/maps/**/*.png');
+const files = require('../assets/maps/**/*.png');
 
-function LazyImage({ src, ...rest }) {
+function LazyImage({ src, alt }) {
     const [active, setActive] = useState(false);
 
-    return src ? (
-        <img
-            src={src}
-            onClick={() => setActive(t => !t)}
-            className={`${active && 'active'}`}
-            {...rest}
-        />
-    ) : (
-        <span>loading</span>
+    return (
+        <div className="nade-img">
+            <img
+                src={src}
+                alt={alt}
+                onClick={() => setActive(t => !t)}
+                className={`${active && 'active'}`}
+            />
+            <span className="nade-img-meta">{alt}</span>
+        </div>
     );
 }
 
-function Nade({ name, actions }) {
+/**
+ * Smoke, flash...
+ */
+function Nade({ name, actions, meta = {} }) {
     const [expanded, setExpanded] = useState(false);
+
+    const sortedActions = sortActions(actions);
 
     return (
         <li className="nade">
@@ -30,11 +38,18 @@ function Nade({ name, actions }) {
                 onClick={() => setExpanded(t => !t)}
             >
                 {parseNadeName(name)}
+                {meta.type && <span className="nade-name-meta"> ({meta.type})</span>}
             </p>
             {expanded && (
-                <div>
-                    {actions.map(([actName, actImg]) => {
-                        return <LazyImage key={actName} src={actImg} alt={actName} />;
+                <div className="nade-actions">
+                    {sortedActions.map(([actName, actImg]) => {
+                        return (
+                            <LazyImage
+                                key={actName}
+                                src={actImg}
+                                alt={meta[actName] ?? getNadeMeta(actName)}
+                            />
+                        );
                     })}
                 </div>
             )}
@@ -45,7 +60,7 @@ function Nade({ name, actions }) {
 /**
  * A site, B site or Middle...
  */
-function MapArea({ name, positions }) {
+function MapArea({ name, positions, meta }) {
     const groupedPositions = groupPositions(positions);
 
     return (
@@ -53,7 +68,7 @@ function MapArea({ name, positions }) {
             <h4 className="map-area-name">{name}</h4>
             <ul>
                 {Object.entries(groupedPositions).map(([nade, actions]) => {
-                    return <Nade key={nade} name={nade} actions={actions} />;
+                    return <Nade key={nade} name={nade} actions={actions} meta={meta[nade]} />;
                 })}
             </ul>
         </div>
@@ -64,15 +79,16 @@ function MapArea({ name, positions }) {
  * Ancient, Nuke...
  */
 function Map({ map }) {
-    const areas = Object.keys(files[map]);
+    const areas = Object.keys(files[map]).sort(alphabeticalSort);
+    const meta = metadata[map];
 
     return (
         <div>
-            <h2>{map}</h2>
+            <h2 className="map-name">{map}</h2>
             <ul>
                 {areas.map(area => (
                     <li key={area}>
-                        <MapArea name={area} positions={files[map][area]} />
+                        <MapArea name={area} positions={files[map][area]} meta={meta} />
                     </li>
                 ))}
             </ul>

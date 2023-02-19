@@ -1,0 +1,34 @@
+{
+    "ancient": {
+        "a-box-sm": {
+            "type": "Jump Throw"
+        },
+        "a-ct-sm": {
+            "type": "Jump Throw",
+            "algn": "Align while crouch, then stand-up"
+        },
+        "a-temple-sm": {
+            "type": "Jump Throw",
+            "pos": "Push up to wall between stones"
+        },
+        "a-donut-sm": {
+            "type": "Jump Throw"
+        },
+        "b-long-sm": {
+            "type": "Jump Throw"
+        },
+        "b-long_v2-sm": {
+            "type": "Jump Throw"
+        },
+        "b-short-sm": {
+            "type": "Jump Throw"
+        },
+        "mid-ct-sm": {
+            "type": "Jump Throw"
+        },
+        "mid-donut-sm": {
+            "type": "Jump Throw",
+            "pos": "Pos. (same align as for CT smoke)"
+        }
+    }
+}
