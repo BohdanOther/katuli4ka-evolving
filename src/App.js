@@ -7,17 +7,15 @@ import { sortActions, alphabeticalSort, getNadeMeta, groupPositions, parseNadeNa
 
 const files = require('../assets/maps/**/*.png');
 
-function LazyImage({ src, alt }) {
-    const [active, setActive] = useState(false);
+const logos = {
+    ancient: require('../assets/maps/logo-ancient.webp'),
+    inferno: require('../assets/maps/logo-inferno.webp'),
+};
 
+function LazyImage({ src, alt, active, onClick }) {
     return (
-        <div className="nade-img">
-            <img
-                src={src}
-                alt={alt}
-                onClick={() => setActive(t => !t)}
-                className={`${active && 'active'}`}
-            />
+        <div className="nade-img" onClick={onClick}>
+            <img src={src} alt={alt} className={`${active && 'active'}`} />
             <span className="nade-img-meta">{alt}</span>
         </div>
     );
@@ -28,8 +26,39 @@ function LazyImage({ src, alt }) {
  */
 function Nade({ name, actions, meta = {} }) {
     const [expanded, setExpanded] = useState(false);
+    const [active, setActive] = useState('');
 
     const sortedActions = sortActions(actions);
+
+    // const handleNavigate = useCallback(
+    //     event => {
+    //         if (!active) {
+    //             return;
+    //         }
+
+    //         console.log(actions);
+
+    //         const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
+
+    //         switch (key) {
+    //             case 'ArrowLeft':
+    //                 console.log('left');
+    //                 break;
+    //             case 'ArrowRight':
+    //                 console.log('right');
+    //                 break;
+    //         }
+    //     },
+    //     [active],
+    // );
+
+    // useEffect(() => {
+    //     document.addEventListener('keydown', handleNavigate);
+
+    //     return () => {
+    //         document.removeEventListener('keydown', handleNavigate);
+    //     };
+    // }, [active, handleNavigate]);
 
     return (
         <li className="nade">
@@ -48,6 +77,14 @@ function Nade({ name, actions, meta = {} }) {
                                 key={actName}
                                 src={actImg}
                                 alt={meta[actName] ?? getNadeMeta(actName)}
+                                active={active === actName}
+                                onClick={() => {
+                                    if (active !== actName) {
+                                        setActive(actName);
+                                    } else {
+                                        setActive('');
+                                    }
+                                }}
                             />
                         );
                     })}
@@ -68,7 +105,7 @@ function MapArea({ name, positions, meta }) {
             <h4 className="map-area-name">{name}</h4>
             <ul>
                 {Object.entries(groupedPositions).map(([nade, actions]) => {
-                    return <Nade key={nade} name={nade} actions={actions} meta={meta[nade]} />;
+                    return <Nade key={nade} name={nade} actions={actions} meta={meta?.[nade]} />;
                 })}
             </ul>
         </div>
@@ -84,8 +121,11 @@ function Map({ map }) {
 
     return (
         <div>
-            <h2 className="map-name">{map}</h2>
-            <ul>
+            <h2 className="map-name">
+                <img src={logos[map]} />
+                {map}
+            </h2>
+            <ul className="map-areas">
                 {areas.map(area => (
                     <li key={area}>
                         <MapArea name={area} positions={files[map][area]} meta={meta} />

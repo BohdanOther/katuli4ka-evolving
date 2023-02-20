@@ -19,7 +19,26 @@ main {
 /* Map */
 
 .map-name {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+
+    background-color: rgb(255 255 255/0.05);
+    border: 1px solid rgb(255 255 255/0.1);
+    border-radius: 4px;
+
     text-transform: capitalize;
+}
+
+.map-name img {
+    width: 70px;
+    margin-right: 8px;
+
+    object-fit: fill;
+}
+
+.map-areas {
+    margin-left: 10px;
 }
 
 .map-area {

@@ -30,5 +30,19 @@
             "type": "Jump Throw",
             "pos": "Pos. (same align as for CT smoke)"
         }
+    },
+    "inferno": {
+        "b-molly-third": {
+            "algn": "Align: press S to go max back"
+        },
+        "b-ct-sm": {
+            "type": "Jump Throw / safe"
+        },
+        "b-coffin-sm": {
+            "type": "safe"
+        },
+        "b-molly-secret": {
+            "type": "Jump Throw"
+        }
     }
 }
