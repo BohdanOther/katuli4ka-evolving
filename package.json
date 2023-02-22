@@ -1,46 +1,29 @@
 {
     "name": "katuli4ka-evolving",
-    "version": "1.0.0",
+    "version": "0.0.0",
     "description": "Nades &amp; tactics",
-    "scripts": {
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d dist",
-        "start": "npx parcel src/index.html --https --port 3300 --open --no-cache",
-        "build": "parcel build src/index.html --public-url /katuli4ka-evolving --no-source-maps"
-    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/BohdanOther/katuli4ka-evolving.git"
     },
-    "author": "BohdanOther",
-    "license": "ISC",
     "bugs": {
         "url": "https://github.com/BohdanOther/katuli4ka-evolving/issues"
     },
+    "author": "BohdanOther",
     "homepage": "https://bohdanother.github.io/katuli4ka-evolving/",
+    "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist",
+        "start": "vite",
+        "build": "vite build",
+        "serve": "vite preview"
+    },
+    "license": "MIT",
     "devDependencies": {
-        "@parcel/compressor-gzip": "^2.8.3",
-        "@parcel/resolver-glob": "^2.8.3",
-        "parcel": "^2.8.3",
-        "prettier": "2.7.1",
-        "process": "^0.11.10"
+        "vite": "^4.1.1",
+        "vite-plugin-solid": "^2.5.0"
     },
     "dependencies": {
-        "gh-pages": "^5.0.0",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "wouter": "2.7.3"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
+        "solid-js": "1.6.11"
     }
 }

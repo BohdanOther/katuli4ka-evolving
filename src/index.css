@@ -59,6 +59,7 @@ main {
 .nade-name {
     cursor: pointer;
     text-transform: capitalize;
+    user-select: none;
 }
 
 .nade-name:hover {
@@ -84,7 +85,7 @@ main {
 
     padding: 8px;
 
-    cursor: pointer;
+    cursor: zoom-in;
 }
 
 .nade-img:hover {
@@ -103,4 +104,5 @@ main {
 .nade-img img.active {
     width: 100%;
     height: 100%;
+    cursor: zoom-out;
 }
