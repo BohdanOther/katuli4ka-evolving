@@ -24,6 +24,7 @@
         "vite-plugin-solid": "^2.5.0"
     },
     "dependencies": {
+        "gh-pages": "5.0.0",
         "solid-js": "1.6.11"
     }
 }
